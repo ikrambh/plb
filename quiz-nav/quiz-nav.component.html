@@ -1,0 +1,26 @@
+<div class="row" style="padding:5px;">
+  <div class="col-md-2">
+    <button class="btn btn-info"
+            *ngIf="!isFirstQuestion"
+            (click)="previous.emit()">
+      Précédent
+    </button>
+  </div>
+  <div class="col-md-4 text-center" style="font-size:1.5em;">
+    Question : {{ questionIndex }} / {{ quiz.questions.length }}
+    - Score : {{ currentScore }}
+  </div>
+  <div class="col-md-2 text-right">
+    <button class="btn btn-info"
+            [disabled]="isNextButtonDisabled"
+            *ngIf="!isLastQuestion"
+            (click)="next.emit()">
+      Suivant
+    </button>
+    <button class="btn btn-warning btn-lg"
+            *ngIf="isLastQuestion && answers[question.id]"
+            (click)="submitQuiz()">
+      Soumettre le quiz
+    </button>
+  </div>
+</div>
